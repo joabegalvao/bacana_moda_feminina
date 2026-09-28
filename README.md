@@ -12,9 +12,66 @@ python3 -m http.server 4173
 ```
 
 Qualquer servidor estático funciona (Nginx, Apache, Netlify, Vercel, Hostinger).
-Publique `index.html` e a pasta `assets/`. As pastas `fotos-sem-marcacoes-instagram/`
-e `tools/` e os arquivos `bacana.jpg`, `Josi_Guerreiro.png`, `Paula_Souza.png` e
-`Sabine_Kiyochi.png` são materiais de origem e não precisam ir para o servidor.
+Publique `index.html` e a pasta `assets/`. A pasta `tools/` não precisa ir para
+o servidor.
+
+### Materiais de origem
+
+Os arquivos enviados pelo cliente não fazem parte do repositório. Eles ficam na
+pasta local do projeto e são ignorados pelo git. As imagens que o site usa já
+estão prontas em `assets/img`.
+
+Só é preciso ter os originais para rodar `tools/optimize-images.py`, ou seja,
+para trocar ou reprocessar uma foto.
+
+| Arquivo de origem | Conteúdo | Usado em |
+| --- | --- | --- |
+| `bacana.jpg` | Logo, 150 x 150 px | cabeçalho, rodapé e ícones |
+| `fotos-sem-marcacoes-instagram/foto-140104-limpa.png` | Vestidos de renda azul e branco | hero, coleção e imagem de compartilhamento |
+| `fotos-sem-marcacoes-instagram/foto-140049-limpa.png` | Arara de vestidos de renda | coleção |
+| `fotos-sem-marcacoes-instagram/foto-140123-limpa.png` | Vestidos florais | coleção |
+| `fotos-sem-marcacoes-instagram/foto-140145-limpa.png` | Arara de saias de renda | coleção |
+| `fotos-sem-marcacoes-instagram/anatomy1.png` | Look amarelo manteiga | looks em detalhes |
+| `fotos-sem-marcacoes-instagram/anatomy2.png` | Look azul e off-white | looks em detalhes |
+| `fotos-sem-marcacoes-instagram/anatomy3.png` | Look marinho e vermelho | looks em detalhes |
+| `fotos-sem-marcacoes-instagram/anatomy4.png` | Look caramelo e renda | looks em detalhes |
+| `Josi_Guerreiro.png`, `Paula_Souza.png`, `Sabine_Kiyochi.png` | Fotos de perfil, 72 x 72 px | avaliações |
+| `New Text Document.txt` | Texto das avaliações | avaliações |
+
+## Repositório
+
+| Item | Valor |
+| --- | --- |
+| Endereço | `git@github.com:joabegalvao/bacana_moda_feminina.git` |
+| Página | https://github.com/joabegalvao/bacana_moda_feminina |
+| Visibilidade | pública (conferida em 28/09/2026) |
+| Branch | `main` |
+
+O repositório guarda só o que o site precisa para funcionar e ser mantido:
+`index.html`, `assets/`, `tools/`, `README.md` e `.gitignore`. O `.gitignore`
+exclui os materiais de origem, que são a pasta `fotos-sem-marcacoes-instagram/`
+e os arquivos `.png`, `.jpg`, `.jpeg` e `.txt` da raiz.
+
+```bash
+git clone git@github.com:joabegalvao/bacana_moda_feminina.git
+```
+
+Um clone novo abre e publica o site normalmente. Só não roda o script de
+imagens, que depende dos materiais de origem.
+
+Os materiais de origem estiveram no repositório no primeiro commit (`8c7f89d`)
+e foram retirados em seguida. Eles continuam acessíveis no histórico do git.
+
+### Avaliações como foram recebidas
+
+Texto original, antes da remoção dos emojis. A página mostra os depoimentos
+sem as indicações de foto.
+
+- **Sabine Kiyochi:** Loja muito bonita e atendimento impecável.
+- **Josi Guerreiro:** A loja é muito aconchegante e fomos muito bem atendidas.
+  Peças de qualidade com preços acessíveis. Nota 10!
+- **Paula Souza:** Lugar maravilhoso!! Com excelente atendimento e peças lindas
+  😍😍 As meninas são muito atenciosas e cuidadosas 🤩
 
 ## Estratégia
 
@@ -67,7 +124,8 @@ tools/optimize-images.py   gera assets/img a partir dos originais
 | Avaliações | `index.html`, seção "AVALIAÇÕES". Fotos de perfil: lista `AVATARS` do script |
 | Novo look | copie um bloco `<article class="look">` e um botão em `.tabs`, mantendo `id` e `aria-controls` iguais |
 
-Para gerar as imagens (requer Pillow):
+Para gerar as imagens (requer Pillow e os materiais de origem na pasta do
+projeto):
 
 ```bash
 python3 tools/optimize-images.py
@@ -144,6 +202,7 @@ e perfis respondem.
 | Inclusão da seção de avaliações com três depoimentos e fotos de perfil | `index.html`, `assets/css/styles.css`, `tools/optimize-images.py`, `assets/img/avaliacao-*` |
 | Links do menu no celular reduzidos de 24 px para 17 px, com linhas de 48 px | `assets/css/styles.css` |
 | Versão nos arquivos de estilo e script, contra cache | `index.html` |
+| Retirada dos materiais de origem do repositório e registro deles no README | `.gitignore`, `README.md` |
 
 ## Créditos e licenças
 

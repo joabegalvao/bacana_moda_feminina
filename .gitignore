@@ -1,3 +1,11 @@
+# Materiais de origem enviados pelo cliente (ficam só na pasta local).
+# As imagens usadas pelo site estão em assets/img.
+/fotos-sem-marcacoes-instagram/
+/*.png
+/*.jpg
+/*.jpeg
+/*.txt
+
 # Metadados do Windows/WSL
 *:Zone.Identifier
 Thumbs.db
